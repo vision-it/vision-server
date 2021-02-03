@@ -1,0 +1,5 @@
+# This file is managed by Puppet
+namespace "default" {
+  policy = "read"
+  capabilities = ["submit-job","list-jobs","read-job", "read-logs"]
+}

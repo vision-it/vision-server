@@ -1,0 +1,20 @@
+---
+fixtures:
+  repositories:
+    stdlib:
+      ref: "v6.3.0"
+      repo: "https://github.com/puppetlabs/puppetlabs-stdlib"
+    apt:
+      ref: "v7.4.2"
+      repo: "https://github.com/puppetlabs/puppetlabs-apt"
+    mailalias_core:
+      ref: "1.0.6"
+      repo: "https://github.com/puppetlabs/puppetlabs-mailalias_core"
+    mysql:
+      ref: "v10.6.0"
+      repo: "https://github.com/puppetlabs/puppetlabs-mysql"
+    cron_core:
+      ref: "1.0.4"
+      repo: "https://github.com/puppetlabs/puppetlabs-cron_core"
+  symlinks:
+    vision_server: '#{source_dir}'

@@ -1,0 +1,14 @@
+{
+  "service": {
+    "id": "<%= @service_id %>",
+    "name": "<%= @service_name %>",
+    "tags":  [<%= @tags.map{|s| "\"#{s}\""}.join(', ')%>],
+    "address": "<%= @address %>",
+    "port": <%= @port %>,
+    "checks": [
+    <% @checks.each do |check| -%>
+    <%= check.to_json %>
+    <% end -%>
+   ]
+ }
+}

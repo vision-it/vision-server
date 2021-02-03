@@ -1,0 +1,32 @@
+# This file is managed by Puppet
+[Unit]
+Description=Nomad
+Documentation=https://nomadproject.io/docs/
+Wants=network-online.target
+After=network-online.target
+
+Wants=consul.service
+After=consul.service
+
+Wants=dnsmasq.service
+After=dnsmasq.service
+
+[Service]
+ExecReload=/bin/kill -HUP $MAINPID
+# Workaround for DNS issues
+ExecStartPre=/usr/bin/sleep 30
+ExecStartPost=/usr/bin/systemctl restart dnsmasq.service
+ExecStart=/usr/bin/nomad agent -config /etc/nomad.d
+KillMode=process
+KillSignal=SIGINT
+LimitNOFILE=65536
+LimitNPROC=infinity
+Restart=on-failure
+RestartSec=2
+StartLimitBurst=3
+StartLimitInterval=10
+TasksMax=infinity
+OOMScoreAdjust=-1000
+
+[Install]
+WantedBy=multi-user.target

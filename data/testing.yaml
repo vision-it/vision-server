@@ -1,0 +1,15 @@
+---
+vision_server::mysql::root_password: 'foobar'
+vision_server::mysql::service_manage: false
+vision_server::mysql::service_enabled: false
+vision_server::exim::catch_all_email: 'foo@bar.de'
+vision_server::exim::mailserver: 'localhost'
+vision_server::hashicorp::consul::services:
+  example:
+    port: 1234
+    tags:
+      - 'foobar'
+    checks:
+      - interval: '10s'
+        tcp: 'localhost:8080'
+        timeout: '10s'
